@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
+
+    <meta charset=utf-8 />
+    <title>DataTables - JS Bin</title>
+    <style type="text/css">
+      body {
+        font: 90%/1.45em "Helvetica Neue", HelveticaNeue, Verdana, Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        background-color: #fff;
+      }
+
+
+    </style>
+    <script type="text/javascript">
+        $(document).ready( function () {
+          var table = $('#example').DataTable({
+            deferLoading: 0,
+            retrieve: true,
+          processing: true,
+          serverSide: true,
+          searching: false,
+          autoWidth: false,
+            dom: "rt<'row'<'col-xs-3'l><'col-xs-9'p>><'row'<'col-xs-12 text-center'i>>",
+          lengthMenu: [5, 10, 25],
+          pagingType: "simple_numbers",
+          sort: false,
+            ajax: {
+                  url: 'https://api.github.com/users/mralexgray/repos',
+                  type: 'GET',
+                            dataType: 'json',
+                  data: function(data) {
+                              var page = (data.start / data.length) + 1;
+                              console.log(data)
+                              data.page = page;
+                              data.per_page = data.length;
+                  }
+                },
+            sAjaxDataProp: '',
+          columns: [
+                { data: "id", title: "id", width: "3%" },
+                { data: "name", title: "name", width: "30%" }
+              ],
+
+          });
+
+          table.page('next').draw('page');
+
+        } );
+
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <table id="example" class="display nowrap" width="100%">
+      </table>
+    </div>
+  </body>
+</html>
