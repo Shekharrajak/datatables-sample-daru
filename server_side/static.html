@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DataTables static sever side processing</title>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/scroller/1.4.2/js/dataTables.scroller.min.js"></script>
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+        var data = [];
+        for ( var i=0 ; i<16042100; i++ ) {
+            data.push( [ i, i, i, i, i ] );
+        }
+
+        $('#example').DataTable( {
+            data:           data,
+            deferRender:    true,
+            scrollCollapse: true,
+            scroller:       true,
+            scrollY: 600,
+            scroller: {
+              loadingIndicator: true
+            }
+        } );
+    } );
+
+  </script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/scroller/1.4.2/css/scroller.dataTables.min.css">
+</head>
+<body>
+<table id="example" class="display nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>ZIP / Post code</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>
