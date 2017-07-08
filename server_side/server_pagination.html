@@ -16,7 +16,7 @@
         $('#example').DataTable( {
             processing: true,
             serverSide: true,
-            // ordering: false,
+            ordering: false,
             searching: true,
             ajax: function ( data, callback, settings ) {
                 var out = [];
@@ -30,18 +30,18 @@
                         data: out,
                         recordsTotal: 16042100,
                         recordsFiltered: 16042100,
-                        pageLength: 10,
-                        paging: true,
+                        // pageLength: 10,
+                        // paging: true,
                     } );
                 }, 50 );
             },
             // deferRender:    true,
             // scrollCollapse: true,
             // scroller:       true,
-            scrollY: 400,
-            scroller: {
-              loadingIndicator: true
-            }
+            // scrollY: 400,
+            // scroller: {
+            //   loadingIndicator: true
+            // }
 
         } );
     } );
@@ -52,7 +52,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/scroller/1.4.2/css/scroller.dataTables.min.css">
 </head>
 <body>
-<dir style="width:50% ; height: 50%; margin-bottom: 100px">
+<dir style="width:80% ; height: 50%; margin-bottom: 100px">
   <table id="example" class="display nowrap" cellspacing="0">
         <thead>
             <tr>
